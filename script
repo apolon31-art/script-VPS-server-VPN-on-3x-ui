@@ -11,7 +11,7 @@ sed -i '18s/yes/no/' /etc/ssh/sshd_config
 
 sed -i '40s/#     Port 22/   Port 22852/' /etc/ssh/ssh_config
 
-rm -rf /etc/resolv.conf && nano /etc/resolv.conf
+rm -rf /etc/resolv.conf 
 echo " dns-nameservers 8.8.8.8 1.1.1.1 " >> /etc/network/interfaces
 echo " nameserver 1.1.1.1 " >> /etc/resolv.conf
 echo " nameserver 8.8.8.8 " >> /etc/resolv.conf
