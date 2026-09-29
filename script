@@ -4,7 +4,7 @@ passwd  && adduser table
 
 git clone https://github.com/MHSanaei/3x-ui.git && cd 3x-ui && git checkout v2.4.5
 
-sed -i '6s/latest/v3.8.5/' docker-compose.yml
+sed -Ei "6s|latest|$(git ls-remote --tags --refs https://github.com/MHSanaei/3x-ui.git | sed 's|.*/||' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n1)|" docker-compose.yml
 
 apt update && apt upgrade -y &&  apt install fail2ban nmap net-tools curl docker.io docker-compose openssl -y
 
