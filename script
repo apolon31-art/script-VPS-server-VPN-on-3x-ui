@@ -4,16 +4,15 @@ passwd  && adduser table
 
 apt update && apt upgrade -y &&  apt install fail2ban nmap net-tools curl docker.io docker-compose openssl -y
 
+git clone https://github.com/MHSanaei/3x-ui.git && cd 3x-ui && git checkout v2.4.5
+
+sed -i '6s/latest/v3.8.5/' docker-compose.yml
 
 sed -i '1s/22/22852/' /etc/ssh/sshd_config
 
 sed -i '18s/yes/no/' /etc/ssh/sshd_config
 
 sed -i '40s/#     Port 22/   Port 22852/' /etc/ssh/ssh_config
-
-git clone https://github.com/MHSanaei/3x-ui.git && cd 3x-ui && git checkout v2.4.5
-
-sed -i '6s/latest/v3.8.5/' docker-compose.yml
 
 docker-compose up -d
 
