@@ -11,15 +11,14 @@ sed -i '18s/yes/no/' /etc/ssh/sshd_config
 
 sed -i '40s/#     Port 22/   Port 22852/' /etc/ssh/ssh_config
 
-rm -rf /etc/resolv.conf 
-echo " dns-nameservers 8.8.8.8 1.1.1.1 " >> /etc/network/interfaces
-echo " nameserver 1.1.1.1 " >> /etc/resolv.conf
-echo " nameserver 8.8.8.8 " >> /etc/resolv.conf
-
-chattr +i /etc/resolv.conf && lsattr /etc/resolv.conf
-
 git clone https://github.com/MHSanaei/3x-ui.git && cd 3x-ui && git checkout v2.4.5
 
 sed -i '6s/latest/v3.8.5/' docker-compose.yml
 
 docker-compose up -d
+
+rm -rf /etc/resolv.conf 
+echo " dns-nameservers 8.8.8.8 1.1.1.1 " >> /etc/network/interfaces
+echo " nameserver 1.1.1.1 " >> /etc/resolv.conf
+echo " nameserver 8.8.8.8 " >> /etc/resolv.conf
+chattr +i /etc/resolv.conf && lsattr /etc/resolv.conf
