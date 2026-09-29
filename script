@@ -14,7 +14,7 @@ sed -i '18s/yes/no/' /etc/ssh/sshd_config
 
 sed -i '40s/#     Port 22/   Port 22852/' /etc/ssh/ssh_config
 
-docker-compose up -d
+docker-compose up -d &&
 sleep 1
 
 rm -rf /etc/resolv.conf 
